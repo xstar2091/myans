@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <limits>
 #include "myans/solution.h"
 
 TEST(Solution, removeSublists) {
@@ -129,6 +130,13 @@ TEST(Solution, removeSublists) {
     head = ListNode::create({3, 2, 5, 4, 2, 5, 5});
     head = sln.removeSublists(head);
     expected = "[3,4,5]";
+    actual = head->toString();
+    EXPECT_EQ(actual, expected);
+    ListNode::destroy(head);
+
+    head = ListNode::create({std::numeric_limits<int>::max(), 10, 10, 10});
+    head = sln.removeSublists(head);
+    expected = "[" + std::to_string(head->val) + "]";
     actual = head->toString();
     EXPECT_EQ(actual, expected);
     ListNode::destroy(head);

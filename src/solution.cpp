@@ -18,7 +18,7 @@ ListNode *Solution::removeSublists(ListNode *head) {
     int result = 1;
     while (tail) {
         result = 1;
-        while (tail && result != 10) {
+        while (tail && result >= -10 && result < 10) {
             result *= tail->val;
             tail = tail->next;
         }
